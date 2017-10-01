@@ -1,0 +1,53 @@
+/***************************
+Add your custom styles below
+****************************/
+
+.footer__navigation {
+	width: 100% !important;
+}
+
+.footer__navigation li {
+	display: inline;
+	padding-right: 20px;
+}
+
+.footer-1 {
+	padding-top: 15px;
+}
+
+body > div.main-container.transition--fade.transition--active > footer > div > div.row.footer__lower.text-center-xs {
+	margin-top: 0;
+	padding: 0;
+}
+
+body > div.main-container.transition--fade.transition--active > footer > div > div.row.footer__lower.text-center-xs hr {
+	margin: 0;
+}
+
+body > div.main-container.transition--fade.transition--active > footer > div > div:nth-child(1) > div.col-md-3.col-sm-4 > p {
+	margin-bottom: 8px;
+}
+
+body > div.main-container.transition--fade.transition--active > footer > div > div:nth-child(1) > div:nth-child(2) > h6, body > div.main-container.transition--fade.transition--active > footer > div > div:nth-child(1) > div:nth-child(1) > p {
+	margin-bottom: 5px;
+}
+
+/*body > div.main-container.transition--fade.transition--active > footer > div > div:nth-child(1) > div:nth-child(1) > a {
+	margin-bottom: 20px;
+}*/
+
+body > div.main-container.transition--fade.transition--active > footer > div > div:nth-child(1) > div:nth-child(1) > a > img {
+	margin-bottom: 10px;
+}
+
+/*@media all and (min-width: 1024px) {
+	body > section.features.features-5 {
+	padding-bottom: 0;
+}*/
+}
+
+/*body > footer > div > div.row.footer__lower.text-center-xs {
+	padding-top: none !important;
+	padding-bottom: none !important;
+	margin-top: none !important;
+}*/
