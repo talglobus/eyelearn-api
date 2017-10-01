@@ -20,7 +20,10 @@ function injectVideo(videoURL) {
 	video.play();
 }
 
-// injectVideo(micro.videoURL);
+$( document ).ready(function() {
+	injectVideo(micro.videoURL);
+});
+
 
 function requestNext(macro) {
 	"use strict";

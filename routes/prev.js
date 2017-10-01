@@ -15,23 +15,27 @@ router.get('/:topicID/:videoID', function(req, res, next) {
 
 	request(`http://www.khanacademy.org/api/v1/topic/${req.params.topicID}`, (err, _, body) => {
 		if (err) return res.status(500).end(err);
-		body = JSON.parse(body);
-		for (let i = 0; i < body.children.length; i++) {
-			if (body.children[i].id === req.params.videoID) {
-				let next = body.children.slice(0, i).filter(elem => elem.kind === "Video");
-				if (!next.length) return res.json([]);
-				else next = next[next.length-1];
-				request(`http://www.khanacademy.org/api/v1/videos/${next.id}`, (err, _, vidBody) => {
-					if (err) return res.status(500).end(err);
-					vidBody = JSON.parse(vidBody);
-					res.json({
-						youtubeID: vidBody.translated_youtube_id,
-						videoURL: vidBody.download_urls.mp4,
-						id: next.id,
-						topicID: req.params.topicID
+		try {
+			body = JSON.parse(body);
+			for (let i = 0; i < body.children.length; i++) {
+				if (body.children[i].id === req.params.videoID) {
+					let next = body.children.slice(0, i).filter(elem => elem.kind === "Video");
+					if (!next.length) return res.json([]);
+					else next = next[next.length-1];
+					request(`http://www.khanacademy.org/api/v1/videos/${next.id}`, (err, _, vidBody) => {
+						if (err) return res.status(500).end(err);
+						vidBody = JSON.parse(vidBody);
+						res.json({
+							youtubeID: vidBody.translated_youtube_id,
+							videoURL: vidBody.download_urls.mp4,
+							id: next.id,
+							topicID: req.params.topicID
+						});
 					});
-				});
+				}
 			}
+		} catch (e) {
+			res.status(500).end(e.message);
 		}
 	});
 });
