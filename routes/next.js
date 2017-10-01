@@ -27,7 +27,8 @@ router.get('/:topicID/:videoID', function(req, res, next) {
 					res.json({
 						youtubeID: vidBody.translated_youtube_id,
 						videoURL: vidBody.download_urls.mp4,
-						id: next.id
+						id: next.id,
+						topicID: req.params.topicID
 					});
 				});
 			}
