@@ -5,11 +5,13 @@
 tryTo = true;
 
 micro = {
-	"youtubeID": "640-86yn2wM",
-	"videoURL": "https://cdn.kastatic.org/KA-youtube-converted/640-86yn2wM.mp4/640-86yn2wM.mp4",
-	"id": "writing-expressions-with-variables-examples",
-	"topicID": "alg-writing-expressions"
+	"youtubeID": "lfZGtjSWcQs",
+	"videoURL": "https://cdn.kastatic.org/KA-youtube-converted/lfZGtjSWcQs.mp4/lfZGtjSWcQs.mp4",
+	"id": "convergent-and-divergent-sequences",
+	"topicID": "seq-conv-diverg-calc"
 };
+
+prevMicro = micro;
 
 function injectVideo(videoURL) {
 	"use strict";
@@ -28,17 +30,22 @@ $( document ).ready(function() {
 function requestNext(macro) {
 	"use strict";
 	if (!tryTo) return;
+	if (micro === []) micro = prevMicro;
 	$.get( "/next/" + micro.topicID + "/" + micro.id, function( data ) {
 		micro = data;
+		if (micro !== []) prevMicro = data;
 		injectVideo(data.videoURL);
+		console.log(micro);
 	});
 }
 
 function requestPrev(macro) {
 	"use strict";
 	if (!tryTo) return;
+	if (micro === []) micro = prevMicro;
 	$.get( "/prev/" + micro.topicID + "/" + micro.id, function( data ) {
 		micro = data;
+		if (micro !== []) prevMicro = data;
 		injectVideo(data.videoURL);
 	});
 }
