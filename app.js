@@ -9,6 +9,9 @@ let index = require('./routes/index');
 let learn = require('./routes/learn');
 let explore = require('./routes/explore');
 let contribute = require('./routes/contribute');
+let transcript = require('./routes/transcript');
+let next = require('./routes/next');
+let prev = require('./routes/prev');
 
 let app = express();
 
@@ -28,6 +31,9 @@ app.use('/', index);
 app.use('/learn', learn);
 app.use('/explore', explore);
 app.use('/contribute', contribute);
+app.use('/transcript', transcript);
+app.use('/next', next);
+app.use('/prev', prev);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
